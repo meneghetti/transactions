@@ -2,13 +2,16 @@
   "name": "transactions",
   "version": "1.0.0",
   "description": "ADP Innovation Labs Pre-Interview Assignment",
-  "main": "index.js",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "start": "npx parcel src/index.html"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "author": "Diego Meneghetti",
   "license": "MIT",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.9.3",
     "parcel": "^2.9.3"
   }
 }
