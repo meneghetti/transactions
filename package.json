@@ -1,0 +1,14 @@
+{
+  "name": "transactions",
+  "version": "1.0.0",
+  "description": "ADP Innovation Labs Pre-Interview Assignment",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx parcel src/index.html"
+  },
+  "author": "Diego Meneghetti",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
