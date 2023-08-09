@@ -2,13 +2,9 @@ const https = require('https');
 const url = require('url');
 
 class ProxyController {
-  constructor() {
-    this.apiUrl = 'https://interview.adpeai.com/api/v2';
-  }
-
   handleGet(req, res) {
     https
-      .get(`${this.apiUrl}/get-task`, apiRes => {
+      .get('https://interview.adpeai.com/api/v2/get-task', apiRes => {
         apiRes.pipe(res);
       })
       .on('error', err => {
@@ -19,8 +15,8 @@ class ProxyController {
   handlePost(req, res) {
     const apiReq = https.request(
       {
-        hostname: this.apiUrl,
-        path: '/submit-task',
+        hostname: 'interview.adpeai.com',
+        path: '/api/v2/submit-task',
         method: 'POST',
       },
       apiRes => {
