@@ -7,8 +7,5 @@
     "start": "node index.js"
   },
   "author": "Diego Meneghetti",
-  "license": "MIT",
-  "dependencies": {
-    "dotenv": "^16.3.1"
-  }
+  "license": "MIT"
 }

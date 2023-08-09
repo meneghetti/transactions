@@ -1,5 +1,4 @@
 const https = require('https');
-const url = require('url');
 
 class ProxyController {
   handleGet(req, res) {
