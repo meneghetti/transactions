@@ -6,6 +6,6 @@ ADP Innovation Labs Pre-Interview Assignment
 
 `npm install`
 
-## Start server and run the application
+## Start proxy server and front-end app concurrently
 
 `npm start`
