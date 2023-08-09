@@ -1,18 +1,16 @@
 import { getTopEarnings } from './helpers/getTopEarnings.js';
 import { displayTopEarners } from './helpers/displayTopEarners.js';
 import { displayTransactions } from './helpers/displayTransactions.js';
-
-// Set back-end server base URL
-const baseURL = 'http://localhost:3000';
+import { postResults } from './helpers/postResults.js';
 
 // Set transactions year to last year
 const currentYear = new Date().getFullYear();
 const transactionsYear = currentYear - 1;
 document.getElementById('year').innerText = transactionsYear;
 
-(async function fetchData() {
+async function getData() {
   // Fetch transactions data
-  const response = await fetch(`${baseURL}/api/get`);
+  const response = await fetch('http://localhost:3000/api/get');
   const data = await response.json();
 
   // Filter last year's transactions
@@ -32,24 +30,20 @@ document.getElementById('year').innerText = transactionsYear;
     .filter(t => t.employee.id === topEarner.id && t.type === 'alpha')
     .map(t => t.transactionID);
 
-  // Display IDs, Names and Earnings columns
+  // Display employees IDs, Names and Earnings columns
   displayTopEarners(dataFromYear, topEarnings);
 
-  // Display top earner's alpha transactions list
-  displayTransactions(topEarnerTransactions);
+  // Display top earner's alpha transactions list and data ID
+  displayTransactions(topEarnerTransactions, data.id);
 
-  // Make an HTTP POST request with challenge results
+  // Format challenge results object
   const challengeResults = { id: data.id, result: topEarnerTransactions };
-  const config = {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(challengeResults),
-  };
-  const postResponse = await fetch(`${baseURL}/api/post`, config);
 
-  // Show response in console log
-  console.log(postResponse);
+  return challengeResults;
+}
+
+// Make an HTTP POST request with challenge results
+(async function () {
+  const results = await getData();
+  postResults(results);
 })();

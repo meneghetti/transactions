@@ -12,6 +12,13 @@
     font-weight: bold;
   }
 
+  #dataId {
+    color: $medium;
+    border-top: solid 1px $medium;
+    padding-top: 1rem;
+    margin-top: 1rem;
+  }
+
   p {
     font-size: 0.75rem;
     font-family: monospace;
