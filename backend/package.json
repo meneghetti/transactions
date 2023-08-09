@@ -1,0 +1,14 @@
+{
+  "name": "transactions-backend",
+  "version": "1.0.0",
+  "description": "Transactions Back-End",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Diego Meneghetti",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}

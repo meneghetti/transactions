@@ -2,16 +2,16 @@
   "name": "transactions",
   "version": "1.0.0",
   "description": "ADP Innovation Labs Pre-Interview Assignment",
-  "source": "src/index.html",
-  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "main": "index.js",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "install:backend": "npm install --prefix backend",
+    "install:frontend": "npm install --prefix frontend",
+    "postinstall": "npm run install:backend && npm run install:frontend",
+    "start": "concurrently \"npm start --prefix backend\" \"npm start --prefix frontend\""
   },
   "author": "Diego Meneghetti",
   "license": "MIT",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.9.3",
-    "parcel": "^2.9.3"
+    "concurrently": "^8.2.0"
   }
 }
