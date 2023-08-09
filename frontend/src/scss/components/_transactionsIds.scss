@@ -1,5 +1,11 @@
-.transactionsIds {
+#transactionsWrapper {
+  display: none;
   margin-top: 2rem;
+
+  &.visible {
+    display: block;
+    animation-name: fade-in-later;
+  }
 
   #topEarner {
     color: $primary;

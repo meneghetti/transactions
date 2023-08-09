@@ -1,7 +1,12 @@
-.topEarners {
-  display: flex;
+#topEarners {
+  display: none;
   gap: 1rem;
   justify-content: space-between;
+
+  &.visible {
+    display: flex;
+    animation-name: fade-in;
+  }
 
   li {
     max-width: 10rem;

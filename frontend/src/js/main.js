@@ -1,51 +1,37 @@
-import data from './services/data.js';
-import { getTopEarnings } from './services/getTopEarnings.js';
+import { getTopEarnings } from './helpers/getTopEarnings.js';
+import { displayTopEarners } from './helpers/displayTopEarners.js';
+import { displayTransactions } from './helpers/displayTransactions.js';
 
-// Filter last year's transactions
+// Set transactions year to last year
 const currentYear = new Date().getFullYear();
 const transactionsYear = currentYear - 1;
 document.getElementById('year').innerText = transactionsYear;
-const dataFromYear = data.transactions.filter(t =>
-  t.timeStamp.startsWith(transactionsYear)
-);
 
-// Get total earnings by employee, sorted from highest to lowest
-const topEarnings = getTopEarnings(dataFromYear);
+(async function fetchData() {
+  // Fetch transactions data
+  const response = await fetch('http://localhost:3000/api/get');
+  const data = await response.json();
 
-// Get top earner
-const topEarner = topEarnings[0];
-document.getElementById('topEarner').innerText = topEarner.name;
-
-// Get alpha transactions from top earner
-const topEarnerTransactions = dataFromYear
-  .filter(t => t.employee.id === topEarner.id && t.type === 'alpha')
-  .map(t => t.transactionID);
-
-topEarnings.forEach(earning => {
-  // Display IDs list
-  const idNode = document.createElement('li');
-  const idTextnode = document.createTextNode(earning.id);
-  idNode.appendChild(idTextnode);
-  document.getElementById('ids').appendChild(idNode);
-
-  // Display names list
-  const uniqueEmployee = dataFromYear.find(
-    data => data.employee.id === earning.id
+  // Filter last year's transactions
+  const dataFromYear = data.transactions.filter(t =>
+    t.timeStamp.startsWith(transactionsYear)
   );
-  const nameNode = document.createElement('li');
-  const nameTextnode = document.createTextNode(uniqueEmployee.employee.name);
-  nameNode.appendChild(nameTextnode);
-  document.getElementById('names').appendChild(nameNode);
 
-  // Display total earnings list
-  const node = document.createElement('li');
-  const textnode = document.createTextNode(
-    earning.totalAmount.toLocaleString('en-US')
-  );
-  node.appendChild(textnode);
-  document.getElementById('earnings').appendChild(node);
-});
+  // Get total earnings by employee, sorted from highest to lowest
+  const topEarnings = getTopEarnings(dataFromYear);
 
-// Display top earner's alpha transactions list
-document.getElementById('transactionIds').innerText =
-  topEarnerTransactions.join(', ');
+  // Get top earner
+  const topEarner = topEarnings[0];
+  document.getElementById('topEarner').innerText = topEarner.name;
+
+  // Get alpha transactions from top earner
+  const topEarnerTransactions = dataFromYear
+    .filter(t => t.employee.id === topEarner.id && t.type === 'alpha')
+    .map(t => t.transactionID);
+
+  // Display IDs, Names and Earnings columns
+  displayTopEarners(dataFromYear, topEarnings);
+
+  // Display top earner's alpha transactions list
+  displayTransactions(topEarnerTransactions);
+})();
