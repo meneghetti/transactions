@@ -5,17 +5,21 @@ const bodyExample = {
 };
 
 export async function postResults(challengeResults) {
-  // Make an HTTP POST request with challenge results
-  const config = {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(challengeResults),
-  };
-  const postResponse = await fetch('http://localhost:3000/api/post', config);
+  try {
+    // Make an HTTP POST request with challenge results
+    const config = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(challengeResults),
+    };
+    const postResponse = await fetch('http://localhost:3000/api/post', config);
 
-  // Show POST response in console
-  console.log(postResponse);
+    // Show POST response in console
+    console.log(postResponse);
+  } catch (e) {
+    console.error(e);
+  }
 }
