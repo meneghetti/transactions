@@ -7,6 +7,35 @@
     <title>Transactions</title>
   </head>
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>Top Earners of <span id="year"></span></h1>
+      </header>
+
+      <section class="container topEarners">
+        <div class="employees">
+          <div class="ids">
+            <h2>ID</h2>
+            <ul id="ids"></ul>
+          </div>
+
+          <div class="names">
+            <h2>Name</h2>
+            <ul id="names"></ul>
+          </div>
+        </div>
+
+        <div class="earnings">
+          <h2>Earnings</h2>
+          <ul id="earnings"></ul>
+        </div>
+      </section>
+
+      <section class="container transactionsIds">
+        <h3><span id="topEarner"></span>'s alpha transactions</h3>
+        <p id="transactionIds"></p>
+      </section>
+    </div>
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>

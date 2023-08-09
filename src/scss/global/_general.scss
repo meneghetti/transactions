@@ -1,4 +1,54 @@
+html {
+  font-size: 14px;
+
+  @media only screen and (min-width: 410px) {
+    font-size: 16px;
+  }
+}
+
 body {
   background: $light;
   color: $dark;
+  font-family: sans-serif;
+  line-height: 1.5;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 0.75rem;
+  border-bottom: solid 1px $medium;
+}
+
+h3 {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: normal;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 22rem;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
 }

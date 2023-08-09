@@ -1,0 +1,36 @@
+.topEarners {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+
+  li {
+    max-width: 10rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:first-child {
+      font-weight: bold;
+      color: $primary;
+    }
+  }
+
+  .employees {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .names {
+    flex: 1;
+  }
+
+  .ids {
+    li {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: normal;
+      color: inherit;
+    }
+  }
+}
