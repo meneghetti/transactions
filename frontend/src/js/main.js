@@ -44,6 +44,10 @@ async function getData() {
 
 // Make an HTTP POST request with challenge results
 (async function () {
-  const results = await getData();
-  postResults(results);
+  try {
+    const results = await getData();
+    postResults(results);
+  } catch (e) {
+    console.error(e);
+  }
 })();
